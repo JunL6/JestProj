@@ -11,8 +11,8 @@ beforeEach(() => {
   };
 
   wrapped = mount(
-    <Root>
-      <CommentList initialState={initialState} />
+    <Root initialState={initialState}>
+      <CommentList />
     </Root>
   );
 });
@@ -22,5 +22,23 @@ afterEach(() => {
 });
 
 it("creates one <li> per comment", () => {
-  console.log(wrapped.find("li").length);
+  expect(wrapped.find("li").length).toEqual(2);
+  //   console.log(wrapped);
+});
+
+it("shows the text for each comment", () => {
+  //   console.log(wrapped.render().text());
+  expect(
+    wrapped
+      .render()
+      .find("li")
+      .text()
+  ).toContain("comment1");
+
+  expect(
+    wrapped
+      .render()
+      .find("li")
+      .text()
+  ).toContain("comment2");
 });
