@@ -41,4 +41,6 @@ it("shows the text for each comment", () => {
       .find("li")
       .text()
   ).toContain("comment2");
+
+  // console.log(wrapped.find("li").length);
 });
